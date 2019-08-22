@@ -1,0 +1,41 @@
+{
+  "name": "whomadethatcoffee",
+  "version": "1.0.0",
+  "description": "Who Made That Coffee?",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --hot",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jandeilson/whomadethatcoffee.git"
+  },
+  "keywords": [
+    "coffee",
+    "made"
+  ],
+  "author": "Jandeilson De Sousa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jandeilson/whomadethatcoffee/issues"
+  },
+  "homepage": "https://github.com/jandeilson/whomadethatcoffee#readme",
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
+  }
+}
