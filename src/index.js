@@ -6,23 +6,7 @@ import Made from './components/Made';
 import WillMade from './components/WillMade'; 
 import Tip from './components/Tip'; 
 
-class App extends React.Component {
-    render() {
-      return (
-              
-        <div>
-         <Made />
-         <WillMade />
-         <Tip />
-        </div>
-        
-      );
-    }
-}
 
-
-ReactDOM.render(
-
-    <App />,
-    document.getElementById('root')
-)
+ReactDOM.render( <Made />, document.getElementById('made'))
+ReactDOM.render( <WillMade />, document.getElementById('willmade'))
+ReactDOM.render( <Tip />, document.getElementById('tip'))
