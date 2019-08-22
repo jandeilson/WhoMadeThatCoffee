@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
-export default class WillMade extends Component {
+class WillMade extends Component {
   render() {
     return (
         <div>Will Made</div>
     );
   }
 }
+
+export default WillMade

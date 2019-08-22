@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
-export default class Tip extends Component {
+class Tip extends Component {
   render() {
     return (
         <div>Tip</div>
     );
   }
 }
+
+export default Tip
