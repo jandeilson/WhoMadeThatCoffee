@@ -79,17 +79,17 @@ class App extends Component {
             person.person = (result[0] !== undefined) ? result[0].person : null;
         });
 
-        return persons;
+        return {data: persons};
     }
       
     render() {
 
-     const data = this.dataModel();
+     const { data } = this.dataModel();
 
       return (
-        <section id="app">
+        <section id="components">
             <section id="made"><Made data={data}/></section>
-            <section id="willmade"><WillMade /></section>
+            <section id="willmade"><WillMade data={data}/></section>
             <section id="tip"><Tip /></section>
         </section>
       );
