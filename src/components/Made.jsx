@@ -1,89 +1,62 @@
 import React from 'react';
 
-const Made = ({ whomade }) => {
 
-  let 
-     arrayWhoMade = [],
-     arrayWhenMade = [];
+const Made = ({ data }) => {
 
-  for (let i = 0; i < whomade.length; i++) {
+  const persons = data;
 
-    let 
-       whomadethatcoffee = whomade[i].gs$cell,
-       person = whomadethatcoffee.$t,
-       date = whomadethatcoffee.$t,
-       col = whomadethatcoffee.col,
-       row = whomadethatcoffee.row;
+  const daysOfWeek = () => {
 
-    let 
-       objsWhoMade = {person, col, row},
-       objsWhenMade = {date, col, row};
+    let
+    date = new Date(),
+    day = new Array(7);
 
-    arrayWhoMade.push(objsWhoMade)
-    arrayWhenMade.push(objsWhenMade)
+    day[0] = "Sunday";
+    day[1] = "Monday";
+    day[2] = "Tuesday";
+    day[3] = "Wednesday";
+    day[4] = "Thursday";
+    day[5] = "Friday";
+    day[6] = "Saturday";
 
+    let daysOfWeek = day[date.getDay()];
+
+    return [daysOfWeek];
   }
-  
-  let 
-     obj = {arrayWhoMade, arrayWhenMade},
-     col1 = ["1"],
-     col4 = ["4"];
 
-  let fCol1 = obj.arrayWhoMade.filter(function(fcol){
-    return col1.indexOf(fcol.col) > -1;
-  });
-
-  let fCol4 = obj.arrayWhenMade.filter(function(fcol){
-    return col4.indexOf(fcol.col) > -1;
-  });
-  
-  fCol1 = { fCol1 : fCol1 }, fCol4 = { fCol4 : fCol4 };
-
-  let 
-     dates = fCol1.fCol1,
-     persons = fCol4.fCol4;
-
-  persons.forEach(function(person) {
-    var result = dates.filter(function(date) {
-      let objs = date.row == person.row;
-      delete date.col;
-      return objs
-    });
-    
-    person.person = (result[0] !== undefined) ? result[0].person : null;
-  });
-
-
-
+  let todayIs = daysOfWeek();
+      
   function sortDates(a, b) {
-    let dateA = new Date(a.date).getTime();
-    let dateB = new Date(b.date).getTime();
-
-    return dateA - dateB;
+    
+      let 
+      dA = new Date(a.date).getTime(),
+      dB = new Date(b.date).getTime();
+      
+      return dA - dB;
   }
 
   let sorted = persons.sort(sortDates);
 
-  let willMadeNextCoffee = sorted[1];
   let whoMadeThatCoffee = sorted[sorted.length-1];
 
   return (
     
     <div>
-      {persons.map((whomade) => {
-        
-        if (whomade === whoMadeThatCoffee) {
-          return <h1 style={{color: 'green'}} key={whomade.person}>Quem fez: {whomade.person}</h1>
-        }
-
-        if (whomade === willMadeNextCoffee) {
-          return <h1 style={{color: 'red'}} key={whomade.person}>Quem vai fazer: {whomade.person}</h1>
+      <h3>{todayIs[0]}</h3>
+      {data.map((whoMade, index) => {
+        if (whoMade === whoMadeThatCoffee) {
+          return (
+          <div key={index} className="whomade">
+            <h2>{whoMade.person} <br></br>Made That Coffe</h2>
+          </div>
+          )
         }
       
       })}
     </div>
-  );
   
+  );
 }
+
 
 export default Made
