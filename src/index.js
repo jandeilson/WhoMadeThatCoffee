@@ -30,39 +30,49 @@ class App extends Component {
    
         let 
         arrayWhoMade = [],
+        arrayWhoWrote = [],
         arrayWhenMade = [];
       
         for (let i = 0; i < data.length; i++) {
             
-            let 
+            let
             wmtc = data[i].gs$cell,
             person = wmtc.$t,
+            word = wmtc.$t,
             date = wmtc.$t,
             col = wmtc.col,
             row = wmtc.row;
-      
-            let 
+
+            let
             objsWhoMade = {person, col, row},
+            objsWhoWrote = {word, col, row},
             objsWhenMade = {date, col, row};
       
             arrayWhoMade.push(objsWhoMade)
+            arrayWhoWrote.push(objsWhoWrote)
             arrayWhenMade.push(objsWhenMade)
         }
         
         let 
-           obj = {arrayWhoMade, arrayWhenMade},
+           obj = {arrayWhoMade, arrayWhoWrote, arrayWhenMade},
            col1 = ["1"],
+           col2 = ["2"],
            col4 = ["4"];
       
         let fCol1 = obj.arrayWhoMade.filter(function(fcol){
           return col1.indexOf(fcol.col) > -1;
+        });
+
+        let fCol2 = obj.arrayWhoWrote.filter(function(fcol){
+            return col2.indexOf(fcol.col) > -1;
         });
       
         let fCol4 = obj.arrayWhenMade.filter(function(fcol){
           return col4.indexOf(fcol.col) > -1;
         });
         
-        fCol1 = { fCol1 : fCol1 }, 
+        fCol1 = { fCol1 : fCol1 },
+        fCol2 = { fCol2 : fCol2 },
         fCol4 = { fCol4 : fCol4 };
 
         let 
@@ -79,6 +89,8 @@ class App extends Component {
             person.person = (result[0] !== undefined) ? result[0].person : null;
         });
 
+        console.log(persons)
+
         return {data: persons};
     }
       
@@ -88,9 +100,15 @@ class App extends Component {
 
       return (
         <section id="components">
-            <section id="made"><Made data={data}/></section>
-            <section id="willmade"><WillMade data={data}/></section>
-            <section id="tip"><Tip /></section>
+            <section id="made">
+                <Made data={data}/>
+            </section>
+            <section id="willmade">
+                <WillMade data={data}/>
+            </section>
+            <section id="tip">
+                <Tip />
+            </section>
         </section>
       );
     }
