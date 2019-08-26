@@ -42,7 +42,7 @@ const Made = ({ data }) => {
   return (
     
     <div>
-      <h3>{todayIs[0]}</h3>
+      <h5>{todayIs[0]}</h5>
       {data.map((whoMade, index) => {
         if (whoMade === whoMadeThatCoffee) {
           return (
