@@ -1,26 +1,30 @@
 {
   "name": "whomadethatcoffee",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Who Made That Coffee?",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
-    "start": "webpack-dev-server --mode development --hot",
-    "build": "webpack --mode production"
+    "build": "yarn clean; webpack --config webpack-prod-config.js",
+    "clean": "rm -rf build/*",
+    "start:dev": "node webpack-dev-server.js",
+    "start:prod": "yarn build; serve build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jandeilson/whomadethatcoffee.git"
+    "url": "git+https://github.com/jandeilson/WhoMadeThatCoffee.git"
   },
   "keywords": [
+    "react",
     "coffee",
+    "google sheets",
     "made"
   ],
   "author": "Jandeilson De Sousa",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jandeilson/whomadethatcoffee/issues"
+    "url": "https://github.com/jandeilson/WhoMadeThatCoffee/issues"
   },
-  "homepage": "https://github.com/jandeilson/whomadethatcoffee#readme",
+  "homepage": "https://github.com/jandeilson/WhoMadeThatCoffee#readme",
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -34,9 +38,14 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.3.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^3.8.0",
+    "webpack-merge": "^4.2.1"
   }
 }
