@@ -1,0 +1,19 @@
+// App ------- >
+@charset "utf-8";
+@import "~bulma/bulma.sass";
+
+// brand colors
+$default: #000000;
+
+#app {
+  #components {
+    section {
+      background: lightgrey;
+      margin: 1rem;
+    }
+  }
+}
+
+// Components styles
+@import 'Made';
+@import 'WillMade';

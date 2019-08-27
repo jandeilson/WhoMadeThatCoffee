@@ -55,12 +55,9 @@ module.exports = merge(common, {
           {
             loader: 'css-loader',
             options: {
-              discardDuplicates: true,
               importLoaders: 1,
               // This enables local scoped CSS based in CSS Modules spec
-              modules: true,
-              // generates a unique name for each class (e.g. app__app___2x3cr)
-              localIdentName: '[name]__[local]___[hash:base64:5]',
+              modules: false,
             },
           },
           {

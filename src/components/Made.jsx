@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const Made = ({ data }) => {
 
   const persons = data;
@@ -41,14 +40,12 @@ const Made = ({ data }) => {
 
   return (
     
-    <div>
+    <div className="made">
       <h5>{todayIs[0]}</h5>
       {data.map((whoMade, index) => {
         if (whoMade === whoMadeThatCoffee) {
           return (
-          <div key={index} className="whomade">
-            <h2>{whoMade.person} <br></br>Made That Coffe</h2>
-          </div>
+            <h2 key={index}>{whoMade.person} <br></br>Made That Coffe</h2>
           )
         }
       

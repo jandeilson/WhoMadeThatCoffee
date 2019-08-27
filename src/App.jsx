@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import './assets/scss/App.scss';
 
 // Components
 import Made from './components/Made'; 
@@ -100,13 +101,13 @@ class App extends Component {
 
       return (
         <section id="components">
-            <section id="made">
+            <section>
                 <Made data={data}/>
             </section>
-            <section id="willmade">
+            <section>
                 <WillMade data={data}/>
             </section>
-            <section id="tip">
+            <section>
                 <Tip />
             </section>
         </section>

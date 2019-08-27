@@ -20,11 +20,11 @@ const WillMade = ({ data }) => {
 
   return (
 
-    <div>
+    <div className="willmade">
     {data.map((whoMade, index) => {
       if (whoMade === willMadeNextCoffee) {
         return (
-        <div key={index} className="whomade">
+        <div key={index}>
           <h3>Who <strong>Will Made</strong>?</h3>
           <h2>{whoMade.person}</h2>
         </div>
