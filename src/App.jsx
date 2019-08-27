@@ -1,9 +1,10 @@
+// React dependencies
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './assets/scss/App.scss';
 
 // Components
-import Made from './components/Made'; 
+import Made from './components/Made';
 import WillMade from './components/WillMade'; 
 import Tip from './components/Tip'; 
 
@@ -90,7 +91,7 @@ class App extends Component {
             person.person = (result[0] !== undefined) ? result[0].person : null;
         });
 
-        console.log(persons)
+        //console.log(persons)
 
         return {data: persons};
     }
@@ -102,13 +103,9 @@ class App extends Component {
       return (
         <section id="components">
             <section>
-                <Made data={data}/>
-            </section>
-            <section>
-                <WillMade data={data}/>
-            </section>
-            <section>
-                <Tip />
+                <Made
+                    data={data}
+                />
             </section>
         </section>
       );

@@ -1,59 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
+import MadeUI from './MadeUI';
 
-const Made = ({ data }) => {
+class Made extends Component {
 
-  const persons = data;
+    whoMadeThatCoffee = () => {
+    const persons = data;
+    console.log(data)
 
-  const daysOfWeek = () => {
 
-    let
-    date = new Date(),
-    day = new Array(7);
+    const daysOfWeek = () => {
 
-    day[0] = "Sunday";
-    day[1] = "Monday";
-    day[2] = "Tuesday";
-    day[3] = "Wednesday";
-    day[4] = "Thursday";
-    day[5] = "Friday";
-    day[6] = "Saturday";
+        let
+            date = new Date(),
+            day = new Array(7);
 
-    let daysOfWeek = day[date.getDay()];
+        day[0] = "Sunday";
+        day[1] = "Monday";
+        day[2] = "Tuesday";
+        day[3] = "Wednesday";
+        day[4] = "Thursday";
+        day[5] = "Friday";
+        day[6] = "Saturday";
 
-    return [daysOfWeek];
-  }
+        let daysOfWeek = day[date.getDay()];
 
-  let todayIs = daysOfWeek();
-      
-  function sortDates(a, b) {
-    
-      let 
-      dA = new Date(a.date).getTime(),
-      dB = new Date(b.date).getTime();
-      
-      return dA - dB;
-  }
+        return [daysOfWeek];
+    }
 
-  let sorted = persons.sort(sortDates);
+    let todayIs = daysOfWeek();
 
-  let whoMadeThatCoffee = sorted[sorted.length-1];
+    function sortDates(a, b) {
 
-  return (
-    
-    <div className="made">
-      <h5>{todayIs[0]}</h5>
-      {data.map((whoMade, index) => {
-        if (whoMade === whoMadeThatCoffee) {
-          return (
-            <h2 key={index}>{whoMade.person} <br></br>Made That Coffe</h2>
-          )
-        }
-      
-      })}
-    </div>
-  
-  );
+        let
+            dA = new Date(a.date).getTime(),
+            dB = new Date(b.date).getTime();
+
+        return dA - dB;
+    }
+
+    let sorted = persons.sort(sortDates);
+
+    let whoMadeThatCoffee = sorted[sorted.length-1];
+    }
+
+
+    render() {
+        const { data } = this.whoMadeThatCoffee();
+
+        return (
+           <MadeUI whoMadeThatCoffee={data} />
+        );
+    }
+
 }
-
 
 export default Made
