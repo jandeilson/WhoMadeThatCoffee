@@ -4,12 +4,24 @@
 
 // brand colors
 $default: #000000;
+$white: #ffffff;
+
+// structure
+*{
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+html{
+  background: $white;
+}
 
 #app {
   #components {
     section {
-      background: lightgrey;
+      color: #23170d;
       margin: 1rem;
+      text-align: center;
     }
   }
 }
