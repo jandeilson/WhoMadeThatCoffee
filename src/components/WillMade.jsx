@@ -1,40 +1,33 @@
-import React from 'react';
+import React, {Component} from 'react';
+import WillMadeUI from "./WillMadeUI";
 
+class WillMade extends Component {
 
-const WillMade = ({ data }) => {
-  
-  const persons = data;
+    dataWillMade = () => {
+        const persons = this.props.data;
 
-  function sortDates(a, b) {
-    
-    let 
-    dA = new Date(a.date).getTime(),
-    dB = new Date(b.date).getTime();
-    
-    return dA - dB;
-  }
+        function sortDates(a, b) {
 
-  let sorted = persons.sort(sortDates);
+            let
+                dA = new Date(a.date).getTime(),
+                dB = new Date(b.date).getTime();
 
-  let willMadeNextCoffee = sorted[1];
+            return dA - dB;
+        }
 
-  return (
+        let sorted = persons.sort(sortDates);
 
-    <div className="willmade">
-    {data.map((whoMade, index) => {
-      if (whoMade === willMadeNextCoffee) {
-        return (
-        <div key={index}>
-          <h3>Who <strong>Will Made</strong>?</h3>
-          <h2>{whoMade.person}</h2>
-        </div>
-        )
-      }
-    
-    })}
-  </div>
+        let willMade = new Array(sorted[1]);
 
-  );
+        return {data: willMade}
+    };
+
+    render() {
+        const {data} = this.dataWillMade();
+
+        return <WillMadeUI data = {data} />
+    }
+
 
 }
 

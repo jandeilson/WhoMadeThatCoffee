@@ -1,55 +1,49 @@
-import React, { Component } from 'react';
-import MadeUI from './MadeUI';
+import React, {Component} from 'react';
+import MadeUI from "./MadeUI";
 
 class Made extends Component {
 
-    whoMadeThatCoffee = () => {
-    const persons = data;
-    console.log(data)
+    dataMade = () => {
+        const persons = this.props.data;
 
+        const daysOfWeek = () => {
+            let date = new Date(),
+                day = new Array(7);
 
-    const daysOfWeek = () => {
+            day[0] = "Sunday";
+            day[1] = "Monday";
+            day[2] = "Tuesday";
+            day[3] = "Wednesday";
+            day[4] = "Thursday";
+            day[5] = "Friday";
+            day[6] = "Saturday";
 
-        let
-            date = new Date(),
-            day = new Array(7);
+            return day[date.getDay()];
+        };
 
-        day[0] = "Sunday";
-        day[1] = "Monday";
-        day[2] = "Tuesday";
-        day[3] = "Wednesday";
-        day[4] = "Thursday";
-        day[5] = "Friday";
-        day[6] = "Saturday";
+        let todayIs = daysOfWeek();
 
-        let daysOfWeek = day[date.getDay()];
+        function sortDates(a, b) {
 
-        return [daysOfWeek];
-    }
+            let dA = new Date(a.date).getTime(),
+                dB = new Date(b.date).getTime();
 
-    let todayIs = daysOfWeek();
+            return dA - dB;
+        }
 
-    function sortDates(a, b) {
+        let sorted = persons.sort(sortDates);
 
-        let
-            dA = new Date(a.date).getTime(),
-            dB = new Date(b.date).getTime();
+        let whoMade = new Array(sorted[sorted.length - 1]);
 
-        return dA - dB;
-    }
+        let data = {todayIs, whoMade};
 
-    let sorted = persons.sort(sortDates);
-
-    let whoMadeThatCoffee = sorted[sorted.length-1];
-    }
-
+        return {data}
+    };
 
     render() {
-        const { data } = this.whoMadeThatCoffee();
+        const {data} = this.dataMade();
 
-        return (
-           <MadeUI whoMadeThatCoffee={data} />
-        );
+        return <MadeUI data = {data}/>
     }
 
 }
