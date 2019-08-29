@@ -33,6 +33,16 @@ module.exports = {
         test: /\.(png|svg|jpg)$/,
         use: ['file-loader'],
       },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            context: path.resolve(__dirname, 'src'),
+            name: "[path][name].[ext]"
+          }
+        }]
+      }
     ],
   },
 };

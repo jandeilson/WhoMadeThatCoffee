@@ -1,27 +1,41 @@
-// App ------- >
+// default imports
 @charset "utf-8";
 @import "~bulma/bulma.sass";
 
-// brand colors
-$default: #000000;
+// variables
+$default: #2a0d00;
 $white: #ffffff;
 
+
 // structure
-*{
-  margin: 0 auto;
-  padding: 0 auto;
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/poppins/poppins-regular-webfont.woff2') format('woff2'),
+  url('../fonts/poppins/poppins-regular-webfont.woff') format('woff'),
+  url('../fonts/poppins/poppins-regular-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins Bold';
+  src: url('../fonts/poppins/poppins-regular-webfont.woff2') format('woff2'),
+  url('../fonts/poppins/poppins-regular-webfont.woff') format('woff'),
+  url('../fonts/poppins/poppins-regular-webfont.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
 }
 
-html{
-  background: $white;
+html {
+  font-family: 'Poppins', sans-serif;
+  background: #ececec;
 }
+
 
 #app {
   #components {
     section {
-      color: #23170d;
-      margin: 1rem;
-      text-align: center;
+      color: $default;
+      margin: 15% 5%;
     }
   }
 }

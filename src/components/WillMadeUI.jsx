@@ -2,7 +2,7 @@ import React from 'react';
 
 const WillMadeUI = ({data}) => {
     return (
-        <div className="willmade">
+        <div className="willmade has-text-centered">
             {data.map((willMade, index) => {
                 if (willMade) {
                     return (

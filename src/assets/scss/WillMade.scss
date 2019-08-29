@@ -4,14 +4,13 @@
 .willmade {
     h2 {
         font-size: 4em;
-        font-weight: 600;
-        
+        font-weight: 700;
+        line-height: 1em;
     }
     h3 {
         font-size: 1.6em;
     }
     strong {
-        color: #23170d;
-        font-weight: 700;
+        color: $default;
     }
 }

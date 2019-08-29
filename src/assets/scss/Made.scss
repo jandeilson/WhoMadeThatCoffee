@@ -2,11 +2,183 @@
 
 
 .made {
-    h2 {
-    }
-    h3 {
 
+  .theBox {
+    position: relative;
+    width: 140px;
+    height: 150px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 4px solid rgba(42, 13, 0, 0.51);
+
+
+    .top,
+    .bottom,
+    .left,
+    .right {
+      position: absolute;
+      -webkit-animation: 8s linear infinite;
+      animation: 8s linear infinite;
     }
+
+    .top {
+      top: -4px;
+      left: -4px;
+      height: 4px;
+      -webkit-animation-name: top;
+      animation-name: top;
+    }
+
+    @-webkit-keyframes top {
+      25% {
+        width: 0;
+        background: $default;
+      }
+      38% {
+        width: calc(103%);
+        background: $default;
+      }
+      50% {
+        background: $default;
+      }
+      62% {
+        background: $default;
+      }
+      75% {
+        width: calc(103%);
+        background: $default;
+      }
+      88% {
+        left: auto;
+        right: -4px;
+        width: 0;
+        background: $default;
+      }
+    }
+
+    .bottom {
+      bottom: -4px;
+      right: -4px;
+      height: 4px;
+      -webkit-animation-name: bottom;
+      animation-name: bottom;
+    }
+
+    @-webkit-keyframes bottom {
+      0% {
+        width: 0;
+      }
+      12% {
+        width: calc(103%);
+        background: $default;
+      }
+      25% {
+        background: $default;
+      }
+      38% {
+        background: $default;
+      }
+      50% {
+        width: calc(103%);
+        background: $default;
+      }
+      62% {
+        left: -4px;
+        width: 0;
+        background: $default;
+      }
+      75% {
+        background: $default;
+      }
+    }
+
+    .left {
+      bottom: -4px;
+      left: -4px;
+      width: 4px;
+      -webkit-animation-name: left;
+      animation-name: left;
+    }
+
+    @-webkit-keyframes left {
+      12% {
+        height: 0;
+        background: $default;
+      }
+      25% {
+        height: calc(103%);
+        background: $default;
+      }
+      38% {
+        background: $default;
+      }
+      50% {
+        background: $default;
+      }
+      62% {
+        height: calc(103%);
+        background: $default;
+      }
+      75% {
+        top: -4px;
+        height: 0;
+        background: $default;
+      }
+      88% {
+        background: $default;
+      }
+    }
+
+    .right {
+      top: -4px;
+      right: -4px;
+      width: 4px;
+      -webkit-animation-name: right;
+      animation-name: right;
+    }
+
+    @-webkit-keyframes right {
+      38% {
+        height: 0;
+        background: $default;
+      }
+      50% {
+        height: calc(103%);
+        background: $default;
+      }
+      62% {
+        background: $default;
+      }
+      75% {
+        background: $default;
+      }
+      88% {
+        height: calc(103%);
+        background: $default;
+      }
+      100% {
+        top: auto;
+        bottom: -4px;
+        height: 0;
+        background: $default;
+      }
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      line-height: 1.8rem;
+
+      strong {
+        color: $default;
+      }
+    }
+  }
+
+  h5 {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    padding: 0 0 5px 0;
+  }
 }
 
 
