@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import MadeUI from "./MadeUI";
+import WillMadeUI from "./WillMadeUI";
 
-class Made extends Component {
+class WhoMadeThatCoffee extends Component {
 
     dataMade = () => {
         const persons = this.props.data;
@@ -34,8 +35,9 @@ class Made extends Component {
         let sorted = persons.sort(sortDates);
 
         let whoMade = new Array(sorted[sorted.length - 1]);
+        let willMade = new Array(sorted[1]);
 
-        let data = {todayIs, whoMade};
+        let data = {todayIs, whoMade, willMade};
 
         return {data}
     };
@@ -43,9 +45,15 @@ class Made extends Component {
     render() {
         const {data} = this.dataMade();
 
-        return <MadeUI data = {data}/>
+        return (
+            <div className="whomadethatcoffee">
+                <MadeUI  data = {data} />
+                <WillMadeUI  data = {data} />
+            </div>
+        );
+
     }
 
 }
 
-export default Made
+export default WhoMadeThatCoffee

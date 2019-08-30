@@ -5,12 +5,23 @@
     h2 {
         font-size: 4em;
         font-weight: 700;
-        line-height: 1em;
+        line-height: 0.8em;
+        margin: 0 0 5% 0;
     }
     h3 {
         font-size: 1.6em;
     }
     strong {
         color: $default;
+    }
+    p {
+        font-style: italic;
+        margin: 0 15%;
+    }
+    .separator-line-bottom {
+        width: 50px;
+        height: 4px;
+        background: $default;
+        margin: 10px auto;
     }
 }

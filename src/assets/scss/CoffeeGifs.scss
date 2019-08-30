@@ -1,0 +1,43 @@
+// CoffeeGifs component styles
+
+.coffeeGifs {
+  position: relative;
+
+  .byGiphy {
+    background-image: url("../images/giphy.png");
+    background-repeat: no-repeat;
+    background-size: 48px;
+    background-position: center center;
+    width: 60px;
+    height: 20px;
+    background-color: #ffffff;
+    position: absolute;
+    box-shadow: 1px 1px $default;
+    top: -10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  .giphyImage {
+    display:block;
+    margin: auto;
+  }
+
+  img {
+    width: auto;
+    height: 128px;
+    //border: 2px dashed $default;
+  }
+
+  button {
+    background: $default;
+    border: none;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+  }
+
+
+}
+

@@ -1,11 +1,10 @@
-// default imports
 @charset "utf-8";
+
+// bulma
 @import "~bulma/bulma.sass";
 
 // variables
 $default: #2a0d00;
-$white: #ffffff;
-
 
 // structure
 @font-face {
@@ -16,30 +15,66 @@ $white: #ffffff;
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-family: 'Poppins Bold';
-  src: url('../fonts/poppins/poppins-regular-webfont.woff2') format('woff2'),
-  url('../fonts/poppins/poppins-regular-webfont.woff') format('woff'),
-  url('../fonts/poppins/poppins-regular-webfont.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
 
 html {
   font-family: 'Poppins', sans-serif;
-  background: #ececec;
+  //animation: 30s colorchange infinite;
+  //-webkit-animation: 30s colorchange infinite;
 }
 
+@keyframes colorchange {
+  0% {
+    background: #b2fecc;
+  }
+  25% {
+    background: #ffb0cc;
+  }
+  50% {
+    background: #dfbce7;
+  }
+  75% {
+    background: #a3ffed;
+  }
+  100% {
+    background: #fff288;
+  }
+}
+
+@-webkit-keyframes colorchange {
+  0% {
+    background: #b2fecc;
+  }
+  25% {
+    background: #ffb0cc;
+  }
+  50% {
+    background: #dfbce7;
+  }
+  75% {
+    background: #a3ffed;
+  }
+  100% {
+    background: #fff288;
+  }
+}
 
 #app {
   #components {
     section {
       color: $default;
-      margin: 15% 5%;
+
+      .whomadethatcoffee {
+        .made,
+        .willmade {
+          margin: 10% 5%;
+        }
+      }
     }
   }
 }
 
-// Components styles
+// components
 @import 'Made';
 @import 'WillMade';
+@import 'CoffeeGifs';
+@import 'Carousel';
