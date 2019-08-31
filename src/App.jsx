@@ -1,7 +1,6 @@
 // React dependencies
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {trackPromise} from 'react-promise-tracker';
 import './assets/scss/App.scss';
 
 // Components
@@ -95,17 +94,17 @@ class App extends Component {
 
         if (loading) {
             return (
-                <div>Loading...</div>
+                <div className="loading"></div>
             );
         }
 
         return (
-            <section id="components" className="is-fullheight">
+            <section id="components">
                 <section>
                     <WhoMadeThatCoffee data={data}/>
                 </section>
                 <section>
-                    <CoffeeGifs/>
+                    <CoffeeGifs />
                 </section>
             </section>
         );
