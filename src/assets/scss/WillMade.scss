@@ -1,6 +1,5 @@
 // WillMade component styles
 
-
 .willmade {
     h2 {
         font-size: 4em;
@@ -25,3 +24,6 @@
         margin: 10px auto;
     }
 }
+
+@import 'slick';
+@import 'slick-theme';

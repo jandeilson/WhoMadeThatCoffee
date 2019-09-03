@@ -10,34 +10,40 @@ import CoffeeGifs from './components/CoffeeGifs';
 class App extends Component {
     state = {
         loading: true,
-        googlesheets: []
+        sheet1: [],
+        sheet2: []
     };
 
+    //Google Sheets JSON
     componentDidMount() {
-        fetch('https://spreadsheets.google.com/feeds/cells/1csusGyqdCyoEKRN5IqpnoiGm9ziZW5sg3DaDwEFz_tU/1/public/full?alt=json')
-            .then(res => res.json())
-            .then((data) => {
-                this.setState({
-                    loading: false,
-                    googlesheets: data.feed.entry
-                })
-            })
-            .catch(console.log)
+        Promise.all([
+            fetch('https://spreadsheets.google.com/feeds/cells/1csusGyqdCyoEKRN5IqpnoiGm9ziZW5sg3DaDwEFz_tU/1/public/full?alt=json'),
+            fetch('https://spreadsheets.google.com/feeds/cells/1csusGyqdCyoEKRN5IqpnoiGm9ziZW5sg3DaDwEFz_tU/2/public/full?alt=json')
+        ])
+            .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+            .then(([data1, data2]) => this.setState({
+                loading: false,
+                sheet1: data1.feed.entry,
+                sheet2: data2.feed.entry
+            }));
     };
 
     dataModel = () => {
 
-        const {googlesheets} = this.state;
+        // get google sheets data in react state
+        const {sheet1} = this.state, {sheet2} = this.state;
+        const data1 = sheet1, data2 = sheet2;
 
-        const data = googlesheets;
-
+        // construct arrays of objects based gsheets col and row
         const arrayWhoMade = [],
             arrayWhoWrote = [],
-            arrayWhenMade = [];
+            arrayWhenMade = [],
+            arrayRatedPersons = [];
 
-        for (let i = 0; i < data.length; i++) {
+        // loops to costumize gsheets data
+        for (let i = 0; i < data1.length; i++) {
 
-            const wmtc = data[i].gs$cell,
+            const wmtc = data1[i].gs$cell,
                 person = wmtc.$t,
                 word = wmtc.$t,
                 date = wmtc.$t,
@@ -53,31 +59,64 @@ class App extends Component {
             arrayWhenMade.push(objsWhenMade);
         }
 
-        const obj = {arrayWhoMade, arrayWhoWrote, arrayWhenMade},
+        for (let i = 0; i < data2.length; i++) {
+
+            const rating = data2[i].gs$cell,
+                person = rating.$t,
+                col = rating.col,
+                row = rating.row;
+
+            const objsRatedName = {person, col, row};
+
+            arrayRatedPersons.push(objsRatedName);
+
+        }
+
+        // just for organize data by rows
+        const objsSheet1 = {arrayWhoMade, arrayWhoWrote, arrayWhenMade},
             col1 = ["1"],
             col2 = ["2"],
             col4 = ["4"];
 
-        let fCol1 = obj.arrayWhoMade.filter(function (fCol) {
+        let sheet1_fCol1 = objsSheet1.arrayWhoMade.filter(function (fCol) {
             return col1.indexOf(fCol.col) > -1;
         });
 
-        let fCol2 = obj.arrayWhoWrote.filter(function (fCol) {
+        let sheet1_fCol2 = objsSheet1.arrayWhoWrote.filter(function (fCol) {
             return col2.indexOf(fCol.col) > -1;
         });
 
-        let fCol4 = obj.arrayWhenMade.filter(function (fCol) {
+        let sheet1_fCol4 = objsSheet1.arrayWhenMade.filter(function (fCol) {
             return col4.indexOf(fCol.col) > -1;
         });
 
-        fCol1 = {fCol1: fCol1};
-        fCol2 = {fCol2: fCol2};
-        fCol4 = {fCol4: fCol4};
+        sheet1_fCol1 = {sheet1_fCol1: sheet1_fCol1};
+        sheet1_fCol2 = {sheet1_fCol2: sheet1_fCol2};
+        sheet1_fCol4 = {sheet1_fCol4: sheet1_fCol4};
 
-        const persons = fCol4.fCol4,
-            dates = fCol1.fCol1,
-            words = fCol2.fCol2;
+        // gsheets cols filtered
+        const persons = sheet1_fCol1.sheet1_fCol1,
+            dates = sheet1_fCol2.sheet1_fCol2,
+            words = sheet1_fCol4.sheet1_fCol4;
 
+        // persons filter to rating
+        const arrayPersons = [];
+
+        for (let i = 0; i < persons.length; i++) {
+            const person = persons[i];
+
+            delete person.col;
+            delete person.row;
+
+            arrayPersons.push(person.person);
+        }
+
+        let ratedPersonsByName = arrayRatedPersons.filter(name => arrayPersons.includes(name.person));
+
+
+        console.log(ratedPersonsByName);
+
+        // assign objects by cols filtered before
         const WhoMadeWillMade = [];
 
         persons.forEach((persons, i) => {
@@ -85,6 +124,7 @@ class App extends Component {
             WhoMadeWillMade.push(merge);
         });
 
+        // and... only necessary data
         return {data: WhoMadeWillMade};
     };
 
@@ -104,7 +144,7 @@ class App extends Component {
                     <WhoMadeThatCoffee data={data}/>
                 </section>
                 <section>
-                    <CoffeeGifs />
+                    <CoffeeGifs/>
                 </section>
             </section>
         );

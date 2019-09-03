@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import MadeUI from "./MadeUI";
 import WillMadeUI from "./WillMadeUI";
 
+
+
 class WhoMadeThatCoffee extends Component {
 
     dataMade = () => {
@@ -45,9 +47,18 @@ class WhoMadeThatCoffee extends Component {
     render() {
         const {data} = this.dataMade();
 
+        const settings = {
+            dots: false,
+            infinite: false,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false
+        };
+
         return (
             <div className="whomadethatcoffee">
-                <MadeUI  data = {data} />
+                <MadeUI  data = {data} settings = {settings} />
                 <WillMadeUI  data = {data} />
             </div>
         );
