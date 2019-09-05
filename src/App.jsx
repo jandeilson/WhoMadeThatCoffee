@@ -30,17 +30,15 @@ class App extends Component {
 
     dataModel = () => {
 
+        /*** who made that coffee - data ***/
+
         // get google sheets data in react state
-        const {sheet1} = this.state, {sheet2} = this.state;
-        const data1 = sheet1, data2 = sheet2;
+        const data1 = this.state.sheet1;
 
-        // construct arrays of objects based gsheets col and row
-        const arrayWhoMade = [],
-            arrayWhoWrote = [],
-            arrayWhenMade = [],
-            arrayRatedPersons = [];
+        // construct arrays of objects based gsheets cols and rows
+        const arrayWhoMade = [], arrayWhoWrote = [], arrayWhenMade = [];
 
-        // loops to costumize gsheets data
+        // loop to costumize gsheets data
         for (let i = 0; i < data1.length; i++) {
 
             const wmtc = data1[i].gs$cell,
@@ -59,62 +57,22 @@ class App extends Component {
             arrayWhenMade.push(objsWhenMade);
         }
 
-        for (let i = 0; i < data2.length; i++) {
+        // filters
+        const objsSheet1 = {arrayWhoMade, arrayWhoWrote, arrayWhenMade};
 
-            const rating = data2[i].gs$cell,
-                person = rating.$t,
-                col = rating.col,
-                row = rating.row;
-
-            const objsRatedName = {person, col, row};
-
-            arrayRatedPersons.push(objsRatedName);
-
-        }
-
-        // just for organize data by rows
-        const objsSheet1 = {arrayWhoMade, arrayWhoWrote, arrayWhenMade},
-            col1 = ["1"],
-            col2 = ["2"],
-            col4 = ["4"];
-
-        let sheet1_fCol1 = objsSheet1.arrayWhoMade.filter(function (fCol) {
-            return col1.indexOf(fCol.col) > -1;
+        let fCol1 = objsSheet1.arrayWhoMade.filter(fCol => {
+            return ["1"].indexOf(fCol.col) > -1;
         });
 
-        let sheet1_fCol2 = objsSheet1.arrayWhoWrote.filter(function (fCol) {
-            return col2.indexOf(fCol.col) > -1;
+        let fCol2 = objsSheet1.arrayWhoWrote.filter(fCol => {
+            return ["2"].indexOf(fCol.col) > -1;
         });
 
-        let sheet1_fCol4 = objsSheet1.arrayWhenMade.filter(function (fCol) {
-            return col4.indexOf(fCol.col) > -1;
+        let fCol4 = objsSheet1.arrayWhenMade.filter(fCol => {
+            return ["4"].indexOf(fCol.col) > -1;
         });
 
-        sheet1_fCol1 = {sheet1_fCol1: sheet1_fCol1};
-        sheet1_fCol2 = {sheet1_fCol2: sheet1_fCol2};
-        sheet1_fCol4 = {sheet1_fCol4: sheet1_fCol4};
-
-        // gsheets cols filtered
-        const persons = sheet1_fCol1.sheet1_fCol1,
-            dates = sheet1_fCol2.sheet1_fCol2,
-            words = sheet1_fCol4.sheet1_fCol4;
-
-        // persons filter to rating
-        const arrayPersons = [];
-
-        for (let i = 0; i < persons.length; i++) {
-            const person = persons[i];
-
-            delete person.col;
-            delete person.row;
-
-            arrayPersons.push(person.person);
-        }
-
-        let ratedPersonsByName = arrayRatedPersons.filter(name => arrayPersons.includes(name.person));
-
-
-        console.log(ratedPersonsByName);
+        const persons = fCol1, dates = fCol2, words = fCol4;
 
         // assign objects by cols filtered before
         const WhoMadeWillMade = [];
@@ -123,6 +81,45 @@ class App extends Component {
             const merge = Object.assign({}, persons, dates[i], words[i])
             WhoMadeWillMade.push(merge);
         });
+
+
+        /*** coffee quality rating - data ***/
+
+        // get google sheets data in react state
+        const data2 = this.state.sheet2;
+
+        const arrayQualityRated = data2.map(function (data) {
+            const name = data.gs$cell.$t,
+                col = parseInt(data.gs$cell.col),
+                row = data.gs$cell.row,
+                objs = {name, col, row};
+            return objs;
+        });
+
+        // rating filter by persons
+        const arrayPersonsName = persons.map(function (name) {
+            return name.person;
+        });
+
+        arrayPersonsName.shift();
+
+        const classifyArrayItems = (arrayPersonsName, arrayQualityRated) => {
+            // mapping the array, so it has all the persons
+            return arrayPersonsName.map(person => {
+                // first find the col number corresponding to the
+                // person in the array
+                const col = arrayQualityRated.find(e => e.name === person);
+
+                // return all the objects that have the same
+                // col value
+                return arrayQualityRated.filter(e => e.col === col.col)
+
+            })
+
+        };
+
+        console.log(classifyArrayItems(arrayPersonsName, arrayQualityRated));
+
 
         // and... only necessary data
         return {data: WhoMadeWillMade};
