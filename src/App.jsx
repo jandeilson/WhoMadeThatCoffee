@@ -89,10 +89,8 @@ class App extends Component {
         const data2 = this.state.sheet2;
 
         const arrayQualityRated = data2.map(function (data) {
-            const name = data.gs$cell.$t,
-                col = parseInt(data.gs$cell.col),
-                row = data.gs$cell.row,
-                objs = {name, col, row};
+            const rating = data.gs$cell.$t, col = data.gs$cell.col,
+                objs = {rating, col};
             return objs;
         });
 
@@ -108,7 +106,7 @@ class App extends Component {
             return arrayPersonsName.map(person => {
                 // first find the col number corresponding to the
                 // person in the array
-                const col = arrayQualityRated.find(e => e.name === person);
+                const col = arrayQualityRated.find(e => e.rating === person);
 
                 // return all the objects that have the same
                 // col value
