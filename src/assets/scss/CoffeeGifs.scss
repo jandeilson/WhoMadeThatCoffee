@@ -6,14 +6,13 @@
   .byGiphy {
     background-image: url("../images/giphy.png");
     background-repeat: no-repeat;
-    background-size: 36px;
+    background-size: 64px;
     background-position: center center;
-    width: 50px;
-    height: 15px;
-    background-color: rgba(255, 255, 255, 0.90);
+    width: 64px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.0);
     position: absolute;
-    //box-shadow: 1px 1px rgba(42, 13, 0, 0.51);
-    top: -10px;
+    bottom: -30px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -27,14 +26,13 @@
   img {
     width: auto;
     height: 128px;
+    mix-blend-mode: multiply;
+
     //border: 2px dashed $default;
   }
 
-  button {
-    background: $default;
+  /** */button {
     border: none;
-    color: #fff;
-    font-size: 1em;
     cursor: pointer;
   }
 

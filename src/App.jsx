@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './assets/scss/App.scss';
+
 // Components
 import WhoMadeThatCoffee from './components/WhoMadeThatCoffee';
 import CoffeeGifs from './components/CoffeeGifs';
@@ -9,23 +10,36 @@ import CoffeeGifs from './components/CoffeeGifs';
 class App extends Component {
     state = {
         loading: true,
-        sheet1: [],
-        sheet2: []
+        sheet2: [],
+        sheet1: []
     };
+
 
     //Google Sheets JSON
     componentDidMount() {
-        Promise.all([
-            fetch('https://spreadsheets.google.com/feeds/cells/1csusGyqdCyoEKRN5IqpnoiGm9ziZW5sg3DaDwEFz_tU/1/public/full?alt=json'),
-            fetch('https://spreadsheets.google.com/feeds/cells/1csusGyqdCyoEKRN5IqpnoiGm9ziZW5sg3DaDwEFz_tU/2/public/full?alt=json')
-        ])
-            .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-            .then(([data1, data2]) => this.setState({
-                loading: false,
-                sheet1: data1.feed.entry,
-                sheet2: data2.feed.entry
-            }));
-    };
+        let fetchData = () => {
+            const spreadsheets ='https://spreadsheets.google.com/feeds/cells/1csusGyqdCyoEKRN5IqpnoiGm9ziZW5sg3DaDwEFz_tU';
+                Promise.all([
+                fetch(spreadsheets + '/1/public/full?alt=json'),
+                fetch(spreadsheets + '/2/public/full?alt=json')
+            ])
+                .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+                .then(([data1, data2]) => this.setState({
+                    loading: false,
+                    sheet1: data1.feed.entry,
+                    sheet2: data2.feed.entry
+                }));
+        };
+
+        fetchData();
+
+        //this.update = setInterval(fetchData, 60000)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.update)
+    }
+
 
     dataModel = () => {
 
@@ -66,7 +80,10 @@ class App extends Component {
 
         // and... result
         const persons = fCol1, words = fCol2, dates = fCol4;
+
         persons.splice(0, 1);
+        words.splice(0, 1);
+        dates.splice(0, 1);
 
 
         /*** coffee quality rating - data ***/
@@ -75,11 +92,8 @@ class App extends Component {
         const data2 = this.state.sheet2;
 
         const arrayQualityRated = data2.map(function (data) {
-            const
-                rating = data.gs$cell.$t,
-                col = data.gs$cell.col,
-                objs = {rating, col};
-            return objs;
+            const rating = data.gs$cell.$t, col = data.gs$cell.col;
+            return {rating, col};
         });
 
         // assign objects filtered before
@@ -103,13 +117,14 @@ class App extends Component {
         return {data: coffeePersons};
     };
 
+
     render() {
         const {loading} = this.state;
         const {data} = this.dataModel();
 
         if (loading) {
             return (
-                <div className="loading"></div>
+                <div className="loading"/>
             );
         }
 
@@ -128,6 +143,6 @@ class App extends Component {
 
 
 ReactDOM.render(
-    <App/>,
+    <App />,
     document.getElementById('app')
 );

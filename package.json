@@ -27,8 +27,10 @@
   "homepage": "https://github.com/jandeilson/WhoMadeThatCoffee#readme",
   "dependencies": {
     "bulma": "^0.7.5",
+    "i18next": "^17.0.13",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-i18next": "^10.12.2",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"

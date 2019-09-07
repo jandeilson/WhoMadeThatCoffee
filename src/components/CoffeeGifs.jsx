@@ -8,7 +8,6 @@ class CoffeeGifs extends Component {
     };
 
     componentDidMount() {
-        // For initial data
         this.fetchData();
     }
 
