@@ -3,23 +3,26 @@ import React, {Component} from 'react';
 import MadeUI from "./MadeUI";
 import WillMadeUI from "./WillMadeUI";
 
+import { withTranslation } from 'react-i18next';
+
 class WhoMadeThatCoffee extends Component {
 
     dataMade = () => {
         const persons = this.props.data;
+        const t = this.props.t;
 
         const daysOfWeek = () => {
             const
                 date = new Date(),
                 day = new Array(7);
 
-            day[0] = "Sunday";
-            day[1] = "Monday";
-            day[2] = "Tuesday";
-            day[3] = "Wednesday";
-            day[4] = "Thursday";
-            day[5] = "Friday";
-            day[6] = "Saturday";
+            day[0] = t('todayIs.sunday');
+            day[1] = t('todayIs.monday');
+            day[2] = t('todayIs.tuesday');
+            day[3] = t('todayIs.wednesday');
+            day[4] = t('todayIs.thursday');
+            day[5] = t('todayIs.friday');
+            day[6] = t('todayIs.saturday');
 
             return day[date.getDay()];
         };
@@ -66,6 +69,7 @@ class WhoMadeThatCoffee extends Component {
 
     render() {
         const {data} = this.dataMade();
+        const {t} = this.props;
 
         const settings = {
             dots: false,
@@ -79,8 +83,8 @@ class WhoMadeThatCoffee extends Component {
 
         return (
             <div className="whomadethatcoffee">
-                <MadeUI data={data} settings={settings}/>
-                <WillMadeUI data={data}/>
+                <MadeUI data={data} settings={settings} t={t}/>
+                <WillMadeUI data={data} t={t}/>
             </div>
         );
 
@@ -88,4 +92,4 @@ class WhoMadeThatCoffee extends Component {
 
 }
 
-export default WhoMadeThatCoffee
+export default withTranslation('translation')(WhoMadeThatCoffee)

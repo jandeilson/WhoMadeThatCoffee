@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from "react-slick";
 
-const MadeUI = ({data, settings}) => {
+const MadeUI = ({data, settings, t}) => {
     // name who made that coffee
     const whoMadeName = data.whoMade.map(whoMade => {
         return whoMade.person
@@ -68,7 +68,7 @@ const MadeUI = ({data, settings}) => {
                     {data.todayIs}
                 </h5>
                 <h5 className="st2">
-                    slide to the left and right of the box
+                    {t('tipBox')}
                 </h5>
             </div>
             <div className="rating-box">
@@ -80,16 +80,16 @@ const MadeUI = ({data, settings}) => {
                     <div>
                     </div>
                     <div>
-                        <h2>{whoMadeName} <br/><strong>Made <br/>That <br/>Coffee.</strong></h2>
+                        <h2>{whoMadeName} <br/><strong>{t('mtc.made')} <br/>{t('mtc.that')} <br/>{t('mtc.coffee')}.</strong></h2>
                     </div>
                     <div>
-                        <h4 className="has-text-centered">Coffee Quality</h4>
+                        <h4 className="has-text-centered">{t('coffeeQuality.quality')}</h4>
                         <ul className="has-text-centered">
-                            <li>Great: {great} </li>
-                            <li>Everage: {everage} </li>
-                            <li>Bad: {bad}</li>
+                            <li>{t('coffeeQuality.great')}: {great} </li>
+                            <li>{t('coffeeQuality.everage')}: {everage} </li>
+                            <li>{t('coffeeQuality.bad')}: {bad}</li>
                         </ul>
-                        <p className="has-text-centered is-italic" style={{fontSize: "0.7em"}}>by who drank</p>
+                        <p className="has-text-centered is-italic" style={{fontSize: "0.7em"}}>{t('coffeeQuality.by')}</p>
                     </div>
                 </Slider>
 

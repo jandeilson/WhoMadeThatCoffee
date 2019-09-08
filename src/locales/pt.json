@@ -1,6 +1,29 @@
 {
-  "translations" : {
-    "Welcome to React Translation": "BEM VINDO ",
-    "This is test view": "This is the test view. You can click or,     select your default language."
+  "pt-BR": {
+    "todayIs": {
+      "sunday": "Domingo",
+      "monday": "Segunda-Feira",
+      "tuesday": "Terça-Feira",
+      "wednesday": "Quarta-Feira",
+      "thursday": "Quinta-Feira",
+      "friday": "Sexta-Feira",
+      "saturday": "Sábado"
+    },
+    "tipBox": "deslize a caixa para a esquerda e direita",
+    "mtc": {
+      "made": "Fez",
+      "that": "Esse",
+      "coffee": "Café"
+    },
+    "coffeeQuality": {
+      "quality": "Qualidade",
+      "great": "Ótimo",
+      "everage": "Mediano",
+      "bad": "Ruim",
+      "by": "por quem bebeu"
+    },
+    "who": "Quem",
+    "willMade": "Vai Fazer",
+    "fromWhoMade": "Recadinho de quem fez"
   }
 }

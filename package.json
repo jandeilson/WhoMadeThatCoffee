@@ -28,6 +28,7 @@
   "dependencies": {
     "bulma": "^0.7.5",
     "i18next": "^17.0.13",
+    "i18next-browser-languagedetector": "^3.0.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-i18next": "^10.12.2",
