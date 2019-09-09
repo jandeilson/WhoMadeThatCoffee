@@ -1,6 +1,9 @@
 {
   "name": "whomadethatcoffee",
   "version": "0.1.0",
+  "engines": {
+    "yarn": "1.17git.3"
+  },
   "description": "Who Made That Coffee?",
   "main": "index.jsx",
   "scripts": {
@@ -37,7 +40,15 @@
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7",
+    "webpack-cli": "^3.3.7"
+  },
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
+    "node-sass": "^4.12.0",
+    "react-slick": "^0.25.2",
+    "sass-loader": "^7.3.1",
+    "style-loader": "^1.0.0",
     "webpack-dev-server": "^3.8.0",
     "webpack-merge": "^4.2.1",
     "terser-webpack-plugin": "^2.0.1",
@@ -48,13 +59,5 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6"
-  },
-  "devDependencies": {
-    "css-loader": "^3.2.0",
-    "file-loader": "^4.2.0",
-    "node-sass": "^4.12.0",
-    "react-slick": "^0.25.2",
-    "sass-loader": "^7.3.1",
-    "style-loader": "^1.0.0"
   }
 }
