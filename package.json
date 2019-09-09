@@ -8,6 +8,7 @@
   "description": "Who Made That Coffee?",
   "main": "index.jsx",
   "scripts": {
+    "start": "node config/server.js",
     "build": "yarn clean; webpack --config config/webpack-prod-config.js",
     "heroku-postbuild": "yarn clean; webpack --config config/webpack-prod-config.js",
     "clean": "rm -rf build/*",
@@ -32,6 +33,7 @@
   "homepage": "https://github.com/jandeilson/WhoMadeThatCoffee#readme",
   "dependencies": {
     "bulma": "^0.7.5",
+    "express": "^4.17.1",
     "i18next": "^17.0.13",
     "i18next-browser-languagedetector": "^3.0.3",
     "react": "^16.9.0",
@@ -44,21 +46,21 @@
     "webpack-cli": "^3.3.7"
   },
   "devDependencies": {
-    "css-loader": "^3.2.0",
-    "file-loader": "^4.2.0",
-    "node-sass": "^4.12.0",
-    "react-slick": "^0.25.2",
-    "sass-loader": "^7.3.1",
-    "style-loader": "^1.0.0",
-    "webpack-dev-server": "^3.8.0",
-    "webpack-merge": "^4.2.1",
-    "terser-webpack-plugin": "^2.0.1",
-    "html-webpack-plugin": "^3.2.0",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.6"
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "react-slick": "^0.25.2",
+    "sass-loader": "^7.3.1",
+    "style-loader": "^1.0.0",
+    "terser-webpack-plugin": "^2.0.1",
+    "webpack-dev-server": "^3.8.0",
+    "webpack-merge": "^4.2.1"
   }
 }
