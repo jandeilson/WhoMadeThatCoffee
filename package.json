@@ -2,7 +2,8 @@
   "name": "whomadethatcoffee",
   "version": "0.1.0",
   "engines": {
-    "yarn": "1.17git.3"
+    "node": "10.16.3",
+    "yarn": "1.17.3"
   },
   "description": "Who Made That Coffee?",
   "main": "index.jsx",
