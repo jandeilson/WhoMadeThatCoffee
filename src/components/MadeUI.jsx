@@ -42,7 +42,7 @@ const MadeUI = ({data, settings, t}) => {
             </div>
     } else if (points <= 9) { // starless
         stars =
-            <div><span className="nopoint">★</span><span className="nopoint">★</span><span className="nopoint">★</span>
+            <div><span className="nopoint">★</span><span className="nopoint bigStar">★</span><span className="nopoint">★</span>
             </div>
     }
 
