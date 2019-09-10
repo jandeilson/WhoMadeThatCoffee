@@ -134,7 +134,7 @@ class App extends Component {
         }
 
         return (
-            <section id="components">
+            <section id="components" className="container">
                 <section>
                     <WhoMadeThatCoffee data={data}/>
                 </section>

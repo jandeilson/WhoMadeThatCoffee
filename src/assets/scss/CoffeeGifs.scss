@@ -2,6 +2,7 @@
 
 .coffeeGifs {
   position: relative;
+  padding: $components-space-tb;
 
   .byGiphy {
     background-image: url("../images/giphy.png");
@@ -11,10 +12,10 @@
     width: 64px;
     height: 32px;
     background-color: rgba(255, 255, 255, 0.0);
-    position: absolute;
-    bottom: -30px;
-    left: 0;
-    right: 0;
+    //position: absolute;
+    //bottom: -30px;
+    //left: 0;
+    //right: 0;
     margin: 0 auto;
   }
 
@@ -37,5 +38,20 @@
   }
 
 
+}
+
+.gifLoading {
+  margin: 40px auto;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  -webkit-animation: spinner 1500ms infinite linear;
+  -moz-animation: spinner 1500ms infinite linear;
+  -ms-animation: spinner 1500ms infinite linear;
+  -o-animation: spinner 1500ms infinite linear;
+  animation: spinner 1500ms infinite linear;
+  border-radius: 0.5em;
+  -webkit-box-shadow: $default 1.5em 0 0 0, $default 1.1em 1.1em 0 0, $default 0 1.5em 0 0, $default -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, $default 0 -1.5em 0 0, $default 1.1em -1.1em 0 0;
+  box-shadow: $default 1.5em 0 0 0, $default 1.1em 1.1em 0 0, $default 0 1.5em 0 0, $default -1.1em 1.1em 0 0, $default -1.5em 0 0 0, $default -1.1em -1.1em 0 0, $default 0 -1.5em 0 0, $default 1.1em -1.1em 0 0;
 }
 

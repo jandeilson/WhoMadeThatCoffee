@@ -3,6 +3,7 @@ import CoffeeGifsUI from "./CoffeeGiffsUI";
 
 class CoffeeGifs extends Component {
     state = {
+        loading: true,
         giphyImage: [],
         giphyTitle: {}
     };
@@ -16,6 +17,7 @@ class CoffeeGifs extends Component {
             .then(res => res.json())
             .then((data) => {
                 this.setState({
+                    loading: false,
                     giphyImage: data.data.images.fixed_height_small.url,
                     giphyTitle: data.data.title
                 })
@@ -24,8 +26,16 @@ class CoffeeGifs extends Component {
     };
 
     render() {
+        const {loading} = this.state;
         const data = this.state;
         const fetchData = this.fetchData;
+
+        if (loading) {
+            return (
+                <div className="gifLoading"></div>
+            );
+
+        }
 
         return <CoffeeGifsUI data={data} change={fetchData}/>
     }

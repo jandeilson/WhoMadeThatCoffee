@@ -5,7 +5,7 @@ const paths = require('./paths');
 
 app.use(express.static(path.join(paths.appBuild)));
 
-app.get('/', function(req, res) {
+app.get('/*', function(req, res) {
     res.sendFile('index.html', { root: path.join(paths.appBuild)});
 });
 

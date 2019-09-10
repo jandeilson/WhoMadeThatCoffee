@@ -3,6 +3,8 @@
 
 .made {
 
+  padding: 30px 0 15px 0;
+
   .theBox {
     position: relative;
     width: 140px;
@@ -191,7 +193,7 @@
   .startText {
     position: relative;
     margin: 0 auto;
-    height: 30px;
+    height: 45px;
 
     .st1,
     .st2 {
@@ -249,7 +251,7 @@
 
   .rating-box {
     position: relative;
-    height: 45px;
+    height: 35px;
 
     .rating {
       unicode-bidi: bidi-override;

@@ -5,6 +5,7 @@
 
 // variables
 $default: #2a0d00;
+$components-space-tb: 15px 0 15px 0;
 
 // structure
 @font-face {
@@ -19,72 +20,67 @@ $default: #2a0d00;
 html {
   font-family: 'Poppins', sans-serif;
 
-  #app {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: calc(100vh + 50px);
-    animation: 60s colorchange infinite;
-    -webkit-animation: 60s colorchange infinite;
+  body {
+    #app {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow-x: hidden;
+      height: calc(100vh + 50px);
+      animation: 60s colorchange infinite;
+      -webkit-animation: 60s colorchange infinite;
 
-    @keyframes colorchange {
-      0% {
-        background: #b2fecc;
-      }
-      25% {
-        background: #ffb0cc;
-      }
-      50% {
-        background: #dfbce7;
-      }
-      75% {
-        background: #a3ffed;
-      }
-      100% {
-        background: #fff288;
-      }
-    }
-
-    @-webkit-keyframes colorchange {
-      0% {
-        background: #b2fecc;
-      }
-      25% {
-        background: #ffb0cc;
-      }
-      50% {
-        background: #dfbce7;
-      }
-      75% {
-        background: #a3ffed;
-      }
-      100% {
-        background: #fff288;
-      }
-    }
-
-    @media (orientation: landscape) {
-      height: auto;
-    }
-  }
-}
-
-
-#app {
-  #components {
-    section {
-      color: $default;
-
-      .whomadethatcoffee {
-        .made,
-        .willmade {
-          margin: 8% 5%;
+      @keyframes colorchange {
+        0% {
+          background: #b2fecc;
+        }
+        25% {
+          background: #ffb0cc;
+        }
+        50% {
+          background: #dfbce7;
+        }
+        75% {
+          background: #a3ffed;
+        }
+        100% {
+          background: #fff288;
         }
       }
+
+      @-webkit-keyframes colorchange {
+        0% {
+          background: #b2fecc;
+        }
+        25% {
+          background: #ffb0cc;
+        }
+        50% {
+          background: #dfbce7;
+        }
+        75% {
+          background: #a3ffed;
+        }
+        100% {
+          background: #fff288;
+        }
+      }
+
+      @media (orientation: landscape) {
+        height: auto;
+      }
+
+      #components {
+        section {
+          color: $default;
+        }
+      }
+
     }
   }
+
 }
 
 // components

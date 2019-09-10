@@ -1,11 +1,14 @@
 // WillMade component styles
 
 .willmade {
+
+    padding: $components-space-tb;;
+
     h2 {
         font-size: 4em;
         font-weight: 700;
         line-height: 0.8em;
-        margin: 0 0 5% 0;
+        padding: 10px 0;
     }
 
     h3 {

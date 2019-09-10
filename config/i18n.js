@@ -8,7 +8,7 @@ const options = {
         escapeValue: false, // not needed for react!!
     },
 
-    debug: true,
+    debug: false,
     initImmediate: false,
 
     resources: {
