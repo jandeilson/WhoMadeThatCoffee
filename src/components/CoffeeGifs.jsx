@@ -13,7 +13,9 @@ class CoffeeGifs extends Component {
     }
 
     fetchData = () => {
-        fetch('https://api.giphy.com/v1/gifs/random?api_key=iJhoDfdfapFRq6jIUgnapKlsS1K8wsnQ&tag=coffee&rating=g')
+        const giphyKeyAPI = '';
+
+        fetch('https://api.giphy.com/v1/gifs/random?api_key=' + giphyKeyAPI + '&tag=coffee&rating=g')
             .then(res => res.json())
             .then((data) => {
                 this.setState({

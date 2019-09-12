@@ -8,7 +8,7 @@ import WhoMadeThatCoffee from './components/WhoMadeThatCoffee';
 import CoffeeGifs from './components/CoffeeGifs';
 
 // i18n
-import { I18nextProvider } from 'react-i18next';
+import {I18nextProvider} from 'react-i18next';
 import i18n from '../config/i18n';
 
 
@@ -23,10 +23,13 @@ class App extends Component {
     //Google Sheets JSON
     componentDidMount() {
         let fetchData = () => {
-            const spreadsheets ='https://spreadsheets.google.com/feeds/cells/1csusGyqdCyoEKRN5IqpnoiGm9ziZW5sg3DaDwEFz_tU';
-                Promise.all([
-                fetch(spreadsheets + '/1/public/full?alt=json'),
-                fetch(spreadsheets + '/2/public/full?alt=json')
+            const
+                gSheetsID = '1k5CE1BAZj-iPL4Pq0a8tEHze1KSyNi-UYErEivaofvA',
+                gSheetsUrl = 'https://spreadsheets.google.com/feeds/cells/' + gSheetsID;
+
+            Promise.all([
+                fetch(gSheetsUrl + '/1/public/full?alt=json'), // sheet 1 - who made and will made
+                fetch(gSheetsUrl + '/2/public/full?alt=json') // sheet 2 - quality rating
             ])
                 .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
                 .then(([data1, data2]) => this.setState({
@@ -50,7 +53,7 @@ class App extends Component {
 
         /*** who made that coffee - data ***/
 
-        // get google sheets data in react state
+            // get google sheets data in react state
         const data1 = this.state.sheet1;
 
         // construct arrays of objects based gsheets cols and rows
@@ -93,7 +96,7 @@ class App extends Component {
 
         /*** coffee quality rating - data ***/
 
-        // get google sheets data in react state
+            // get google sheets data in react state
         const data2 = this.state.sheet2;
 
         const arrayQualityRated = data2.map(function (data) {
@@ -149,7 +152,7 @@ class App extends Component {
 
 ReactDOM.render(
     <I18nextProvider i18n={i18n}>
-        <App />
+        <App/>
     </I18nextProvider>,
     document.getElementById('app')
 );
