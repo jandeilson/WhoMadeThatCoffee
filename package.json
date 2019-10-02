@@ -6,7 +6,6 @@
     "yarn": "1.17.3"
   },
   "description": "Who Made That Coffee?",
-  "main": "index.jsx",
   "scripts": {
     "start": "node config/server.js",
     "dev": "node config/webpack-dev-server.js",
